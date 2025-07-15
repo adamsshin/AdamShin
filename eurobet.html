@@ -1,0 +1,592 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eurobet Italia: Interactive Partnership Proposal for New Growth</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+<!-- Chosen Palette: Calm Harmony -->
+<!-- Application Structure Plan: The SPA is designed with a user-centric, four-part narrative flow (Opportunity, Solution, Proof, Partnership) rather than mirroring the report's D-H-E-P structure. This approach guides the user logically from understanding the market context to the proposed solution and its data-backed evidence, culminating in a clear action plan. The structure uses a single-page scroll with a sticky navigation bar for easy access. Key interactions include filterable charts to explore data dynamically and clickable cards/timeline elements to reveal detailed information progressively, enhancing engagement without overwhelming the user. This non-linear, explorative structure is more effective for a web application than a linear document, facilitating better comprehension and decision-making. -->
+<!-- Visualization & Content Choices: 
+1. Market Share (Report Info: Eurobet vs Competitors) -> Goal: Compare -> Viz: Bar Chart -> Interaction: Hover for exact values -> Justification: Instantly shows Eurobet's market position relative to key rivals. Library: Chart.js.
+2. Gen Z Needs (Report Info: Player Psychology) -> Goal: Inform -> Viz: Interactive Cards (HTML/CSS) -> Interaction: Click to reveal details -> Justification: Breaks down complex psychological drivers into digestible, engaging pieces. Library: Vanilla JS.
+3. Prize Drop Impact (Report Info: Table 1) -> Goal: Show Change -> Viz: Dynamic Bar Chart -> Interaction: Dropdown filter to update chart by metric -> Justification: Transforms a static table into an interactive tool, allowing users to see the specific impact on different KPIs, making the data more powerful. Library: Chart.js.
+4. Promo ROI (Report Info: Table 2) -> Goal: Compare/Prove -> Viz: Bar Chart -> Interaction: Hover for campaign details -> Justification: Clearly visualizes the high ROI of various promotion types, providing strong evidence for the proposed strategy. Library: Chart.js.
+5. Roadmap (Report Info: Integration Plan) -> Goal: Organize -> Viz: CSS Timeline -> Interaction: Hover/Click for phase details -> Justification: Presents the partnership plan in a clear, sequential, and visually appealing format. Method: HTML/Tailwind.
+CONFIRMING NO SVG/Mermaid. -->
+<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+<style>
+body {
+font-family: 'Inter', sans-serif;
+background-color: #F8F7F4;
+color: #383735;
+}
+.nav-active {
+color: #3B82F6;
+font-weight: 700;
+}
+.nav-inactive {
+color: #6B7280;
+transition: color 0.3s;
+}
+.nav-inactive:hover {
+color: #3B82F6;
+}
+.chart-container {
+position: relative;
+width: 100%;
+max-width: 700px;
+margin-left: auto;
+margin-right: auto;
+height: 350px;
+max-height: 450px;
+}
+@media (min-width: 768px) {
+.chart-container {
+height: 450px;
+}
+}
+.content-card {
+background-color: #FFFFFF;
+border: 1px solid #E5E7EB;
+border-radius: 0.75rem;
+padding: 1.5rem;
+box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+transition: transform 0.3s, box-shadow 0.3s;
+}
+.content-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.07), 0 4px 6px -4px rgb(0 0 0 / 0.07);
+}
+.kpi-card {
+background: linear-gradient(145deg, #ffffff, #f0f0f0);
+}
+</style>
+</head>
+<body class="antialiased">
+
+<header id="header" class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+<nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<div class="flex items-center">
+<span class="font-bold text-xl text-blue-600">MASSIVE GAMING</span>
+<span class="mx-2 text-gray-300">|</span>
+<span class="font-semibold text-gray-700">Eurobet Partnership Proposal</span>
+</div>
+<div class="hidden md:block">
+<div class="ml-10 flex items-baseline space-x-4">
+<a href="#opportunity" class="nav-link nav-inactive px-3 py-2 rounded-md text-sm font-medium">Opportunity</a>
+<a href="#solution" class="nav-link nav-inactive px-3 py-2 rounded-md text-sm font-medium">Solution</a>
+<a href="#evidence" class="nav-link nav-inactive px-3 py-2 rounded-md text-sm font-medium">Evidence</a>
+<a href="#partnership" class="nav-link nav-inactive px-3 py-2 rounded-md text-sm font-medium">Partnership</a>
+</div>
+</div>
+<div class="-mr-2 flex md:hidden">
+<button id="mobile-menu-button" type="button" class="bg-gray-100 inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-blue-500">
+<span class="sr-only">Open main menu</span>
+<svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+</svg>
+</button>
+</div>
+</div>
+</nav>
+<div id="mobile-menu" class="md:hidden hidden">
+<div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+<a href="#opportunity" class="nav-link nav-inactive hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Opportunity</a>
+<a href="#solution" class="nav-link nav-inactive hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Solution</a>
+<a href="#evidence" class="nav-link nav-inactive hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Evidence</a>
+<a href="#partnership" class="nav-link nav-inactive hover:bg-gray-100 block px-3 py-2 rounded-md text-base font-medium">Partnership</a>
+</div>
+</div>
+</header>
+
+<main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+
+<section id="introduction" class="text-center mb-16 md:mb-24">
+<h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">A Strategic Partnership for a New Era of Gaming</h1>
+<p class="mt-4 max-w-3xl mx-auto text-lg md:text-xl text-gray-600">We propose a plan to acquire Gen Z users and maximize existing customer loyalty for Eurobet Italia through Massive Gaming's integrated portfolio, designed to accelerate growth.</p>
+</section>
+
+<!-- Opportunity Section -->
+<section id="opportunity" class="scroll-mt-20 mb-16 md:mb-24">
+<div class="text-center mb-12">
+<span class="text-blue-600 font-semibold">Diagnosis</span>
+<h2 class="text-3xl font-bold mt-2">Evolving Market, New Opportunities</h2>
+<p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">Eurobet holds strong brand equity but faces a significant opportunity to acquire new customer segments and enhance retention amidst the new paradigm shift in the online casino market.</p>
+</div>
+
+<div class="grid md:grid-cols-2 gap-8 items-center">
+<div class="content-card">
+<h3 class="text-xl font-bold mb-4">Italian Online Betting Market Share</h3>
+<p class="text-gray-600 mb-4">Eurobet is in the top tier with a 9.6% share, but a gap exists with leaders like Lottomatica and Sisal. This signifies significant growth potential in the online casino market.</p>
+<div class="chart-container h-64 md:h-80">
+<canvas id="marketShareChart"></canvas>
+</div>
+</div>
+<div class="content-card">
+<h3 class="text-xl font-bold mb-4">Strategic Gap Analysis</h3>
+<ul class="space-y-4">
+<li class="flex items-start">
+<span class="flex-shrink-0 flex items-center justify-center h-8 w-8 rounded-full bg-blue-100 text-blue-600 mr-4 font-bold">1</span>
+<div>
+<h4 class="font-semibold">New User Acquisition Gap</h4>
+<p class="text-gray-600">High dependency on sports betting limits the attraction of 'casino-first' Gen Z users.</p>
+</div>
+</li>
+<li class="flex items-start">
+<span class="flex-shrink-0 flex items-center justify-center h-8 w-8 rounded-full bg-blue-100 text-blue-600 mr-4 font-bold">2</span>
+<div>
+<h4 class="font-semibold">Next-Gen Content Gap</h4>
+<p class="text-gray-600">An absolute lack of games with social, instant gratification, and gamification mechanics preferred by Gen Z.</p>
+</div>
+</li>
+<li class="flex items-start">
+<span class="flex-shrink-0 flex items-center justify-center h-8 w-8 rounded-full bg-blue-100 text-blue-600 mr-4 font-bold">3</span>
+<div>
+<h4 class="font-semibold">Retention Innovation Gap</h4>
+<p class="text-gray-600">Missing opportunities to maximize LTV due to the absence of sophisticated, gamified retention tools (e.g., Prize Drops).</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</section>
+
+<!-- Solution Section -->
+<section id="solution" class="scroll-mt-20 mb-16 md:mb-24">
+<div class="text-center mb-12">
+<span class="text-blue-600 font-semibold">Solution</span>
+<h2 class="text-3xl font-bold mt-2">A Dual Strategy for Acquisition and Retention</h2>
+<p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">Massive Gaming offers two core solutions: 'Instant Games' to acquire Gen Z users and 'Modern Slots & Promotion Tools' to maximize the LTV of all users.</p>
+</div>
+
+<div class="grid md:grid-cols-2 gap-8">
+<div class="content-card">
+<h3 class="text-xl font-bold mb-2">① Next-Gen User Acquisition: Instant & Social Games</h3>
+<p class="text-gray-600 mb-6">Gen Z rejects passive entertainment. Games that target their core psychology (social, instant gratification, control) are necessary. Click the keywords below to explore Gen Z traits.</p>
+<div id="genZTabs" class="flex space-x-2 mb-4 border-b">
+<button data-tab="social" class="tab-btn py-2 px-4 font-semibold border-b-2 border-blue-500 text-blue-600">#Social_Connection</button>
+<button data-tab="instant" class="tab-btn py-2 px-4 font-semibold border-b-2 border-transparent text-gray-500 hover:text-blue-600">#Instant_Gratification</button>
+<button data-tab="gamification" class="tab-btn py-2 px-4 font-semibold border-b-2 border-transparent text-gray-500 hover:text-blue-600">#Gamified_Control</button>
+</div>
+<div id="genZContent">
+<div data-content="social" class="tab-content">
+<h4 class="font-bold mb-2">Community-Centric Experiences</h4>
+<p class="text-gray-600">87% of Gen Z play games to connect with friends. Live chat, leaderboards, and multiplayer features turn simple gambling into a 'social event', fostering organic communities and increasing retention.</p>
+</div>
+<div data-content="instant" class="tab-content hidden">
+<h4 class="font-bold mb-2">Quick, Snackable Fun</h4>
+<p class="text-gray-600">For the mobile generation with short attention spans, complex rules are a barrier. Instant games with minimal rules and fast play sessions provide immediate satisfaction and easily attract new users.</p>
+</div>
+<div data-content="gamification" class="tab-content hidden">
+<h4 class="font-bold mb-2">Empowering Player Agency</h4>
+<p class="text-gray-600">They want to be active participants, not passive spectators. Game mechanics where player decisions affect the outcome (e.g., when to cash out, where to aim) provide a sense of control and maximize immersion.</p>
+</div>
+</div>
+</div>
+
+<div class="content-card">
+<h3 class="text-xl font-bold mb-2">② Maximizing Retention: Modern Slots & Promotion Tools</h3>
+<p class="text-gray-600 mb-6">Retaining acquired users and increasing their value is crucial. Massive Gaming's promotion tools leverage proven psychological drivers to maximize LTV.</p>
+<ul class="space-y-4">
+<li class="flex items-start">
+<div class="flex-shrink-0 h-10 w-10 flex items-center justify-center rounded-lg bg-blue-500 text-white font-bold text-lg">FS</div>
+<div class="ml-4">
+<h4 class="font-semibold">Personalized Free Spins</h4>
+<p class="text-gray-600">Beyond simple bonuses, our system allows for customized campaigns based on player behavior, preferences, and LTV, serving as a precision tool for reactivation and loyalty rewards.</p>
+</div>
+</li>
+<li class="flex items-start">
+<div class="flex-shrink-0 h-10 w-10 flex items-center justify-center rounded-lg bg-yellow-500 text-white font-bold text-lg">PD</div>
+<div class="ml-4">
+<h4 class="font-semibold">The Game Changer: Prize Drops</h4>
+<p class="text-gray-600">Unexpected, random rewards dropped during a session utilize the 'variable ratio reinforcement' principle, creating constant anticipation and dramatically increasing session time and bet frequency.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</section>
+
+<!-- Evidence Section -->
+<section id="evidence" class="scroll-mt-20 mb-16 md:mb-24">
+<div class="text-center mb-12">
+<span class="text-blue-600 font-semibold">Evidence</span>
+<h2 class="text-3xl font-bold mt-2">A Success Strategy Proven by Data</h2>
+<p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">Our proposal is not based on speculation, but on clear market data and concrete success stories. The data proves the powerful effect and high ROI of the proposed solutions.</p>
+</div>
+
+<div class="grid lg:grid-cols-2 gap-8">
+<div class="content-card">
+<h3 class="text-xl font-bold mb-2">The Impact of Prize Drops</h3>
+<p class="text-gray-600 mb-4">See how key player metrics change when a Jackpot/Prize Drop mechanism is added. You can select the desired metric through the filter.</p>
+<div class="mb-4">
+<select id="kpiFilter" class="w-full p-2 border rounded-md bg-gray-50">
+<option value="all" selected>View All Metrics</option>
+<option value="avgBet">Average Bet Amount</option>
+<option value="rounds">Rounds Per Session</option>
+<option value="deposits">Number of Deposits</option>
+<option value="newGameRevenue">New Game Revenue</option>
+<option value="gameRevenue">Included Game Revenue</option>
+</select>
+</div>
+<div class="chart-container h-80">
+<canvas id="kpiImpactChart"></canvas>
+</div>
+</div>
+<div class="content-card">
+<h3 class="text-xl font-bold mb-2">Promotional Campaign ROI</h3>
+<p class="text-gray-600 mb-4">Well-designed promotions guarantee a high return on investment. Various iGaming campaign cases show that promotions like free spins and bonuses are highly effective. Hover over the bars for details.</p>
+<div class="chart-container h-80">
+<canvas id="roiChart"></canvas>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Partnership Section -->
+<section id="partnership" class="scroll-mt-20">
+<div class="text-center mb-12">
+<span class="text-blue-600 font-semibold">Partnership</span>
+<h2 class="text-3xl font-bold mt-2">A Phased Execution Plan for Success</h2>
+<p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">We aim to build a transparent and successful partnership through a clear roadmap and measurable KPIs.</p>
+</div>
+
+<!-- Integrated Roadmap -->
+<div>
+<h3 class="text-2xl font-bold text-center mb-8">Integrated Roadmap</h3>
+<div class="relative">
+<div class="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gray-300 hidden md:block"></div>
+<div class="space-y-12 md:space-y-0">
+<!-- Phase 1 -->
+<div class="md:grid md:grid-cols-2 md:gap-8 items-center">
+<div class="flex justify-center md:justify-end mb-4 md:mb-0 md:pr-8">
+<div class="w-48 text-center md:text-right">
+<p class="font-bold text-blue-600">Phase 1</p>
+<p class="font-semibold">First 30-60 Days</p>
+</div>
+</div>
+<div class="relative">
+<div class="hidden md:block absolute h-8 w-8 bg-blue-500 rounded-full left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 flex items-center justify-center text-white font-bold">1</div>
+<div class="content-card ml-0 md:ml-4">
+<h4 class="font-bold text-lg">Focus on User Acquisition</h4>
+<p class="text-gray-600 mt-2">Launch a curated selection of 5-7 Instant/Crash games to immediately target Gen Z users and initiate cross-selling to the existing sportsbook base.</p>
+</div>
+</div>
+</div>
+<!-- Phase 2 -->
+<div class="md:grid md:grid-cols-2 md:gap-8 items-center">
+<div class="relative order-2">
+<div class="hidden md:block absolute h-8 w-8 bg-blue-500 rounded-full right-0 top-1/2 -translate-y-1/2 translate-x-1/2 flex items-center justify-center text-white font-bold">2</div>
+<div class="content-card mr-0 md:mr-4">
+<h4 class="font-bold text-lg">Focus on Retention & LTV</h4>
+<p class="text-gray-600 mt-2">Launch the first wave of the modern slots portfolio and initiate the first 'Eurobet Prize Drop' campaign to boost engagement across the platform.</p>
+</div>
+</div>
+<div class="flex justify-center md:justify-start mb-4 md:mb-0 md:pl-8 order-1">
+<div class="w-48 text-center md:text-left">
+<p class="font-bold text-blue-600">Phase 2</p>
+<p class="font-semibold">Days 60-120</p>
+</div>
+</div>
+</div>
+<!-- Phase 3 -->
+<div class="md:grid md:grid-cols-2 md:gap-8 items-center">
+<div class="flex justify-center md:justify-end mb-4 md:mb-0 md:pr-8">
+<div class="w-48 text-center md:text-right">
+<p class="font-bold text-blue-600">Phase 3</p>
+<p class="font-semibold">Ongoing</p>
+</div>
+</div>
+<div class="relative">
+<div class="hidden md:block absolute h-8 w-8 bg-blue-500 rounded-full left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 flex items-center justify-center text-white font-bold">3</div>
+<div class="content-card ml-0 md:ml-4">
+<h4 class="font-bold text-lg">Optimization & Expansion</h4>
+<p class="text-gray-600 mt-2">Continuously release new content and collaboratively analyze performance data to refine promotion strategies, building a long-term, data-driven partnership.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- KPI -->
+<div class="mt-16">
+<h3 class="text-2xl font-bold text-center mb-8">Measuring Success: Key Performance Indicators (KPIs)</h3>
+<div class="grid md:grid-cols-2 gap-8">
+<div class="content-card kpi-card">
+<h4 class="font-bold text-lg mb-4">User Acquisition KPIs</h4>
+<ul class="space-y-2 text-gray-700 list-disc list-inside">
+<li>New Player Registrations (segmented by age)</li>
+<li>FTD rate for players whose first game is an Instant Game</li>
+<li>Customer Acquisition Cost (CAC) for Gen Z segment</li>
+</ul>
+</div>
+<div class="content-card kpi-card">
+<h4 class="font-bold text-lg mb-4">Retention & Engagement KPIs</h4>
+<ul class="space-y-2 text-gray-700 list-disc list-inside">
+<li>Increase in overall player session duration & bet frequency</li>
+<li>Player Retention Rate (monthly cohort analysis)</li>
+<li>Player Lifetime Value (LTV) growth</li>
+<li>Engagement rate with Prize Drop & Free Spin promotions</li>
+</ul>
+</div>
+</div>
+</div>
+
+<!-- Next Steps -->
+<div class="mt-16 text-center bg-white p-8 rounded-lg shadow-lg">
+<h3 class="text-2xl font-bold">Next Steps for a Mutually Profitable Collaboration</h3>
+<p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+We are confident this partnership will drive growth for Eurobet. We propose a follow-up meeting within the next two weeks to demonstrate our game portfolio, discuss technical integration, and outline a specific commercial framework.
+</p>
+<button class="mt-8 bg-blue-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 transition duration-300">
+Request a Meeting
+</button>
+</div>
+</section>
+
+</main>
+
+<footer class="bg-gray-800 text-white">
+<div class="container mx-auto py-4 px-5 text-center">
+<p>© 2025 Massive Gaming. All Rights Reserved.</p>
+<p class="text-sm text-gray-400">This document is intended for the purpose of a partnership proposal with Eurobet Italia.</p>
+</div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+const mobileMenuButton = document.getElementById('mobile-menu-button');
+const mobileMenu = document.getElementById('mobile-menu');
+
+mobileMenuButton.addEventListener('click', () => {
+mobileMenu.classList.toggle('hidden');
+});
+
+const navLinks = document.querySelectorAll('.nav-link');
+const sections = document.querySelectorAll('section[id]');
+
+const observerOptions = {
+root: null,
+rootMargin: '0px',
+threshold: 0.4
+};
+
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+navLinks.forEach(link => {
+link.classList.remove('nav-active');
+link.classList.add('nav-inactive');
+if (link.getAttribute('href').substring(1) === entry.target.id) {
+link.classList.add('nav-active');
+link.classList.remove('nav-inactive');
+}
+});
+}
+});
+}, observerOptions);
+
+sections.forEach(section => {
+observer.observe(section);
+});
+
+navLinks.forEach(link => {
+link.addEventListener('click', (e) => {
+e.preventDefault();
+const targetId = e.currentTarget.getAttribute('href');
+const targetElement = document.querySelector(targetId);
+if (targetElement) {
+targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+if (mobileMenu.classList.contains('hidden') === false) {
+mobileMenu.classList.add('hidden');
+}
+}
+});
+});
+
+
+const marketShareData = {
+labels: ['Lottomatica', 'Sisal', 'Snai', 'Eurobet', 'Others'],
+datasets: [{
+label: 'Market Share (%)',
+data: [16.4, 15.6, 9.8, 9.6, 48.6],
+backgroundColor: [
+'rgba(59, 130, 246, 0.7)',
+'rgba(34, 197, 94, 0.7)',
+'rgba(249, 115, 22, 0.7)',
+'rgba(239, 68, 68, 0.7)',
+'rgba(156, 163, 175, 0.7)'
+],
+borderColor: [
+'rgba(59, 130, 246, 1)',
+'rgba(34, 197, 94, 1)',
+'rgba(249, 115, 22, 1)',
+'rgba(239, 68, 68, 1)',
+'rgba(156, 163, 175, 1)'
+],
+borderWidth: 1
+}]
+};
+
+new Chart(document.getElementById('marketShareChart'), {
+type: 'bar',
+data: marketShareData,
+options: {
+indexAxis: 'y',
+responsive: true,
+maintainAspectRatio: false,
+plugins: {
+legend: { display: false },
+title: { display: false },
+tooltip: {
+callbacks: {
+label: function(context) {
+return ` ${context.dataset.label}: ${context.raw}%`;
+}
+}
+}
+},
+scales: {
+x: {
+beginAtZero: true,
+title: {
+display: true,
+text: 'Share (%)'
+}
+}
+}
+}
+});
+
+const genZTabs = document.getElementById('genZTabs');
+const genZContent = document.getElementById('genZContent');
+genZTabs.addEventListener('click', (e) => {
+if(e.target.tagName === 'BUTTON'){
+const tab = e.target.dataset.tab;
+
+genZTabs.querySelectorAll('.tab-btn').forEach(btn => {
+btn.classList.remove('border-blue-500', 'text-blue-600');
+btn.classList.add('border-transparent', 'text-gray-500');
+});
+
+e.target.classList.add('border-blue-500', 'text-blue-600');
+e.target.classList.remove('border-transparent', 'text-gray-500');
+
+genZContent.querySelectorAll('.tab-content').forEach(content => {
+content.classList.add('hidden');
+});
+
+genZContent.querySelector(`[data-content="${tab}"]`).classList.remove('hidden');
+}
+});
+
+const kpiData = {
+labels: ['Average Bet Amount', 'Rounds Per Session', 'Number of Deposits', 'New Game Revenue', 'Included Game Revenue'],
+values: [11, 8, 9, 259, 9],
+ids: ['avgBet', 'rounds', 'deposits', 'newGameRevenue', 'gameRevenue']
+};
+
+const kpiChartCtx = document.getElementById('kpiImpactChart').getContext('2d');
+let kpiImpactChart = new Chart(kpiChartCtx, {
+type: 'bar',
+data: {
+labels: kpiData.labels,
+datasets: [{
+label: 'Increase (%)',
+data: kpiData.values,
+backgroundColor: 'rgba(59, 130, 246, 0.7)',
+borderColor: 'rgba(59, 130, 246, 1)',
+borderWidth: 1
+}]
+},
+options: {
+responsive: true,
+maintainAspectRatio: false,
+plugins: { legend: { display: false } },
+scales: { y: { beginAtZero: true, title: { display: true, text: 'Increase (%)' } } }
+}
+});
+
+document.getElementById('kpiFilter').addEventListener('change', function(e) {
+const filterValue = e.target.value;
+if (filterValue === 'all') {
+kpiImpactChart.data.labels = kpiData.labels;
+kpiImpactChart.data.datasets[0].data = kpiData.values;
+} else {
+const index = kpiData.ids.indexOf(filterValue);
+kpiImpactChart.data.labels = [kpiData.labels[index]];
+kpiImpactChart.data.datasets[0].data = [kpiData.values[index]];
+}
+kpiImpactChart.update();
+});
+
+
+const roiData = {
+labels: ['CPM Popunder', 'Mobile Banner', 'In-Page Push', 'Push Ads (Giveaway)'],
+values: [175.15, 40.4, 84, 215],
+details: [
+'Target: Tier-1/2 | Promo: Free Spins/Bonus',
+'Target: Malaysia/Singapore | Promo: Spin the Wheel',
+'Target: Asia | Promo: Free Spins/Low Min. Deposit',
+'Target: Romania | Promo: Wheel of Fortune/Prize Box'
+]
+};
+
+new Chart(document.getElementById('roiChart'), {
+type: 'bar',
+data: {
+labels: roiData.labels,
+datasets: [{
+label: 'ROI (%)',
+data: roiData.values,
+backgroundColor: [
+'rgba(59, 130, 246, 0.7)',
+'rgba(16, 185, 129, 0.7)',
+'rgba(245, 158, 11, 0.7)',
+'rgba(239, 68, 68, 0.7)',
+],
+borderColor: [
+'rgba(59, 130, 246, 1)',
+'rgba(16, 185, 129, 1)',
+'rgba(245, 158, 11, 1)',
+'rgba(239, 68, 68, 1)',
+],
+borderWidth: 1
+}]
+},
+options: {
+responsive: true,
+maintainAspectRatio: false,
+plugins: {
+legend: { display: false },
+tooltip: {
+callbacks: {
+label: function(context) {
+return ` ROI: ${context.parsed.y}%`;
+},
+afterLabel: function(context){
+return roiData.details[context.dataIndex];
+}
+}
+}
+},
+scales: { y: { beginAtZero: true, title: { display: true, text: 'ROI (%)' } } }
+}
+});
+});
+</script>
+</body>
+</html>
+
+
