@@ -1,0 +1,426 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Massive Gaming & 7bet Strategic Partnership Proposal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Calm Harmony (Slate, Sky, Emerald) -->
+    <!-- Application Structure Plan: This SPA is designed as a persuasive, narrative-driven dashboard that follows a decision-maker's logical thought process. Eschewing a rigid report structure, it uses a sticky top navigation for quick access to key sections. The flow is structured to build a compelling case: (1) Overview: Grasp the core value proposition instantly. (2) Market Opportunity: Use data to understand the urgency and the target demographic. (3) Our Solution: Clearly present the dual-engine growth strategy. (4) Expected Impact: Quantify the financial benefits of the partnership. (5) Roadmap: Provide a clear, actionable plan for execution. This structure was chosen to make a complex proposal easily digestible, guiding the user from problem to solution and culminating in a clear call to action, thus maximizing persuasive impact. -->
+    <!-- Visualization & Content Choices: 
+        - Market Growth (Goal: Show change): A Chart.js line chart is used to visually represent the explosive CAGR of the Gen Z market, making the scale of the opportunity immediately apparent.
+        - Player Comparison (Goal: Compare/Analyze): Side-by-side cards built with HTML/Tailwind replace a static table to compare Traditional vs. Gen Z players. JS-powered hover effects highlight each attribute, improving focus and engagement.
+        - Dual-Engine Strategy (Goal: Inform/Structure): A two-column layout using Tailwind CSS Grid clearly delineates the 'Acquisition' and 'Retention' engines. Icons and concise text simplify the complex strategy.
+        - KPI Impact Projections (Goal: Compare/Persuade): A Chart.js horizontal bar chart visualizes the projected KPI improvements. This format is ideal for comparing percentage changes. Interactive tooltips provide context on hover.
+        - LTV Flywheel (Goal: Show relationships/flow): An animated circular diagram built with HTML/Tailwind visualizes the self-sustaining 'Acquire-Engage-Monetize-Reinvest' cycle. Subtle animations emphasize the flow, aiding conceptual understanding.
+        - Implementation Roadmap (Goal: Organize/Plan): An interactive tab interface, powered by JS, presents the phased rollout. This prevents information overload by showing only the details of the selected phase, enhancing user control and clarity.
+        - All visualizations are implemented with Chart.js (Canvas) and HTML/Tailwind, with interactions powered by Vanilla JS.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .chart-container { position: relative; width: 100%; max-width: 600px; margin-left: auto; margin-right: auto; height: 300px; max-height: 400px; }
+        @media (min-width: 768px) { .chart-container { height: 350px; } }
+        .nav-link { transition: color 0.3s, border-color 0.3s; }
+        .flywheel-item { transition: transform 0.3s, box-shadow 0.3s; }
+        .flywheel-item:hover { transform: scale(1.05); }
+        .tab-button.active { border-color: #0ea5e9; color: #0ea5e9; font-weight: 700; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header id="header" class="bg-white/80 backdrop-blur-md shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <span class="font-bold text-xl text-slate-800">Massive Gaming <span class="text-sky-500">&</span> 7bet</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#hero" class="nav-link text-gray-500 hover:text-sky-500 px-3 py-2 rounded-md text-sm font-medium">Overview</a>
+                        <a href="#opportunity" class="nav-link text-gray-500 hover:text-sky-500 px-3 py-2 rounded-md text-sm font-medium">Opportunity</a>
+                        <a href="#solution" class="nav-link text-gray-500 hover:text-sky-500 px-3 py-2 rounded-md text-sm font-medium">Solution</a>
+                        <a href="#impact" class="nav-link text-gray-500 hover:text-sky-500 px-3 py-2 rounded-md text-sm font-medium">Impact</a>
+                        <a href="#roadmap" class="nav-link text-gray-500 hover:text-sky-500 px-3 py-2 rounded-md text-sm font-medium">Roadmap</a>
+                        <a href="#next-steps" class="nav-link text-gray-500 hover:text-sky-500 px-3 py-2 rounded-md text-sm font-medium">Next Steps</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="py-20 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl md:text-5xl font-bold text-slate-900 leading-tight">
+                    A Strategic Partnership for <span class="text-sky-500">7bet</span>'s Sustainable Growth:<br>Acquiring the Next Generation of Players
+                </h1>
+                <p class="mt-6 max-w-3xl mx-auto text-lg text-slate-600">
+                    Massive Gaming's 'Dual-Engine' solution is the definitive strategy to effectively acquire Gen Z users and funnel them into 7bet's core, high-revenue slots ecosystem, maximizing Player Lifetime Value (LTV).
+                </p>
+                <div class="mt-12">
+                    <a href="#solution" class="bg-sky-500 text-white font-bold py-3 px-8 rounded-full hover:bg-sky-600 transition-colors duration-300 text-lg">
+                        Explore The Growth Strategy
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="opportunity" class="py-24">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-slate-900">A Generational Shift: New Market, New Rules</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-slate-600">The center of the iGaming universe is shifting to Gen Z. They have entirely different behaviors and expectations, presenting both a threat and a massive opportunity for 7bet.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="bg-white p-8 rounded-xl shadow-lg">
+                        <h3 class="text-2xl font-bold text-center mb-4 text-slate-800">Gen Z is Driving Online Gambling Growth</h3>
+                        <p class="text-center text-slate-500 mb-6">The under-25 age group shows an explosive Compound Annual Growth Rate (CAGR) of 14.32%, reshaping the entire market. Capturing them now means securing future market leadership.</p>
+                        <div class="chart-container h-64 md:h-80">
+                            <canvas id="marketGrowthChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-lg">
+                        <h3 class="text-2xl font-bold text-center mb-6 text-slate-800">Anatomy of Your Future Customer</h3>
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="text-center">
+                                <h4 class="font-bold text-lg text-slate-700 mb-3 border-b-2 border-emerald-400 pb-2">Gen Z Player (Under 25)</h4>
+                                <ul class="space-y-2 text-slate-600 text-left">
+                                    <li class="flex items-start"><span class="text-emerald-500 mr-2 mt-1">▶</span> Instant, Fast-Paced Games</li>
+                                    <li class="flex items-start"><span class="text-emerald-500 mr-2 mt-1">▶</span> Social & Community Driven</li>
+                                    <li class="flex items-start"><span class="text-emerald-500 mr-2 mt-1">▶</span> Mobile-First Experience</li>
+                                    <li class="flex items-start"><span class="text-emerald-500 mr-2 mt-1">▶</span> Value Transparency & Control</li>
+                                </ul>
+                            </div>
+                            <div class="text-center">
+                                <h4 class="font-bold text-lg text-slate-700 mb-3 border-b-2 border-slate-300 pb-2">Traditional Player (Over 35)</h4>
+                                <ul class="space-y-2 text-slate-600 text-left">
+                                    <li class="flex items-start"><span class="text-slate-400 mr-2 mt-1">▶</span> Jackpots & Big Win Potential</li>
+                                    <li class="flex items-start"><span class="text-slate-400 mr-2 mt-1">▶</span> Prefers Solitary Play</li>
+                                    <li class="flex items-start"><span class="text-slate-400 mr-2 mt-1">▶</span> Desktop / Mobile-Agnostic</li>
+                                    <li class="flex items-start"><span class="text-slate-400 mr-2 mt-1">▶</span> Trust in Brand & Regulation</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="mt-6 text-center text-slate-500">7bet's current portfolio excels with traditional players but lacks the crucial 'gateway' to acquire Gen Z. This is the strategic gap Massive Gaming is built to fill.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="solution" class="py-24 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-slate-900">The Massive Gaming 'Dual-Engine' Growth Strategy</h2>
+                    <p class="mt-4 max-w-3xl mx-auto text-slate-600">We don't just provide games. We provide an integrated growth system that manages the entire player journey, from Gen Z acquisition to high-value conversion.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-10 items-start">
+                    <div class="bg-slate-50 p-8 rounded-xl border border-slate-200">
+                        <div class="text-center">
+                            <div class="mx-auto bg-sky-100 text-sky-600 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                                <span class="text-3xl font-bold">1</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-slate-800">Engine 1: New User Acquisition</h3>
+                            <p class="text-slate-500 mt-2">Via 'Instant Games' for Gen Z</p>
+                        </div>
+                        <ul class="mt-6 space-y-4 text-slate-600">
+                            <li class="flex"><span class="text-sky-500 font-bold mr-3">✔</span> <strong>Low Barrier to Entry:</strong> Simple, fast gameplay reduces psychological friction for new users.</li>
+                            <li class="flex"><span class="text-sky-500 font-bold mr-3">✔</span> <strong>Viral Marketing Potential:</strong> Social-first Crash Games enable low-cost, high-impact promotion.</li>
+                             <li class="flex"><span class="text-sky-500 font-bold mr-3">✔</span> <strong>Fills Strategic Gap:</strong> Strengthens the 7bet portfolio with a dedicated Gen Z product line.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-50 p-8 rounded-xl border border-slate-200">
+                        <div class="text-center">
+                           <div class="mx-auto bg-emerald-100 text-emerald-600 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                                <span class="text-3xl font-bold">2</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-slate-800">Engine 2: Retention & Conversion</h3>
+                            <p class="text-slate-500 mt-2">A 'Strategic Bridge' to High-Value Slots</p>
+                        </div>
+                         <ul class="mt-6 space-y-4 text-slate-600">
+                            <li class="flex"><span class="text-emerald-500 font-bold mr-3">✔</span> <strong>Gamified Journey:</strong> 'Instant Game Missions → Slot Rewards' creates natural cross-play incentives.</li>
+                            <li class="flex"><span class="text-emerald-500 font-bold mr-3">✔</span> <strong>Habit Formation:</strong> Converts short-term interest into a long-term, profitable slots habit.</li>
+                            <li class="flex"><span class="text-emerald-500 font-bold mr-3">✔</span> <strong>Maximize LTV:</strong> Leverages 7bet's strongest asset—slots—to maximize the value of acquired users.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="impact" class="py-24">
+             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-slate-900">Quantifiable Impact: Growth Proven by Data</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-slate-600">This partnership is more than a collaboration; it's a powerful growth driver designed to significantly improve 7bet's core business KPIs.</p>
+                </div>
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="bg-white p-8 rounded-xl shadow-lg">
+                        <h3 class="text-2xl font-bold text-center mb-6 text-slate-800">Projected KPI Uplift</h3>
+                        <div class="chart-container h-80 md:h-96">
+                             <canvas id="kpiImpactChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-lg">
+                        <h3 class="text-2xl font-bold text-center mb-6 text-slate-800">The LTV Flywheel Growth Model</h3>
+                        <div class="relative flex items-center justify-center p-6 min-h-[350px]">
+                            <div class="absolute w-64 h-64 border-2 border-dashed border-sky-300 rounded-full animate-spin" style="animation-duration: 20s;"></div>
+                            <div class="absolute w-80 h-80 border-2 border-dashed border-emerald-300 rounded-full animate-spin" style="animation-duration: 30s; animation-direction: reverse;"></div>
+                            
+                            <div class="flywheel-item absolute top-0 text-center" style="transform: translateY(-20px);">
+                                <div class="bg-sky-100 text-sky-600 rounded-full p-3 inline-block shadow-md">💰</div>
+                                <p class="mt-2 font-semibold">1. Low-Cost Acquisition</p>
+                            </div>
+                            <div class="flywheel-item absolute right-0 text-center" style="transform: translateX(30px);">
+                                <div class="bg-emerald-100 text-emerald-600 rounded-full p-3 inline-block shadow-md">🎮</div>
+                                <p class="mt-2 font-semibold">2. Deepen Engagement</p>
+                            </div>
+                            <div class="flywheel-item absolute bottom-0 text-center" style="transform: translateY(20px);">
+                                <div class="bg-sky-100 text-sky-600 rounded-full p-3 inline-block shadow-md">💎</div>
+                                <p class="mt-2 font-semibold">3. Monetize & Retain</p>
+                            </div>
+                             <div class="flywheel-item absolute left-0 text-center" style="transform: translateX(-30px);">
+                                <div class="bg-emerald-100 text-emerald-600 rounded-full p-3 inline-block shadow-md">📈</div>
+                                <p class="mt-2 font-semibold">4. Reinvest in Growth</p>
+                            </div>
+                            <div class="text-center z-10 bg-white/50 backdrop-blur-sm rounded-full p-4">
+                               <p class="font-bold text-lg text-slate-800">7bet Growth Engine</p>
+                               <p class="text-sm text-slate-500">Sustainable LTV</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="roadmap" class="py-24 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-slate-900">Phased Roadmap: A Clear Path to Success</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-slate-600">We propose a systematic 4-phase rollout to minimize risk and ensure data-driven success, demonstrating our commitment to a true partnership.</p>
+                </div>
+                <div>
+                    <div class="mb-8 border-b border-gray-200">
+                        <nav class="-mb-px flex space-x-8 justify-center" aria-label="Tabs">
+                            <button data-tab="1" class="tab-button active whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">Phase 1: Pilot</button>
+                            <button data-tab="2" class="tab-button whitespace-nowrap py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 font-medium text-sm">Phase 2: Optimize</button>
+                            <button data-tab="3" class="tab-button whitespace-nowrap py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 font-medium text-sm">Phase 3: Expand</button>
+                            <button data-tab="4" class="tab-button whitespace-nowrap py-4 px-1 border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 font-medium text-sm">Phase 4: Innovate</button>
+                        </nav>
+                    </div>
+                    <div id="tab-content" class="max-w-4xl mx-auto">
+                        <div data-content="1" class="tab-pane active">
+                            <div class="bg-slate-50 rounded-lg p-8">
+                                <h3 class="text-xl font-bold text-slate-800">Phase 1: Tech Integration & UK Pilot (Months 1-3)</h3>
+                                <p class="mt-2 text-slate-600">The focus is a 'stable start.' We will launch 5 flagship Instant Games on the lower-risk UK platform (7bet.co.uk) to ensure technical stability and gather initial user data.</p>
+                                <ul class="mt-4 space-y-2 list-disc list-inside text-slate-600">
+                                    <li><strong>Key Activities:</strong> API integration, launch of 5 flagship games, co-development of initial 'bridge' missions.</li>
+                                    <li><strong>Success Metrics:</strong> Speed of integration, game stability, initial adoption rates, mission completion rates.</li>
+                                </ul>
+                            </div>
+                        </div>
+                         <div data-content="2" class="tab-pane hidden">
+                            <div class="bg-slate-50 rounded-lg p-8">
+                                <h3 class="text-xl font-bold text-slate-800">Phase 2: Marketing Push & Optimization (Months 4-6)</h3>
+                                <p class="mt-2 text-slate-600">We 'accelerate growth' based on pilot data. Targeted social media and influencer campaigns will be launched for the UK market, while player data is used to refine game selection and mission difficulty.</p>
+                                <ul class="mt-4 space-y-2 list-disc list-inside text-slate-600">
+                                    <li><strong>Key Activities:</strong> Targeted marketing campaigns, data-driven optimization, promotional A/B testing.</li>
+                                    <li><strong>Success Metrics:</strong> Customer Acquisition Cost (CAC), retention rates, cross-sell rate.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div data-content="3" class="tab-pane hidden">
+                            <div class="bg-slate-50 rounded-lg p-8">
+                                <h3 class="text-xl font-bold text-slate-800">Phase 3: Full UK Launch & Lithuanian Expansion (Months 7-9)</h3>
+                                <p class="mt-2 text-slate-600">We 'scale the proven model' to the entire market. The full portfolio will be expanded on 7bet.co.uk, and a phased rollout will begin on 7bet.lt, adapting the strategy for a mature market.</p>
+                                <ul class="mt-4 space-y-2 list-disc list-inside text-slate-600">
+                                    <li><strong>Key Activities:</strong> Full portfolio expansion in the UK, custom-tailored launch in Lithuania.</li>
+                                    <li><strong>Success Metrics:</strong> Revenue uplift in UK, initial adoption rates in Lithuania.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div data-content="4" class="tab-pane hidden">
+                            <div class="bg-slate-50 rounded-lg p-8">
+                                <h3 class="text-xl font-bold text-slate-800">Phase 4: Full Ecosystem & Continuous Innovation (Months 10-12+)</h3>
+                                <p class="mt-2 text-slate-600">We become a 'long-term growth partner.' The full portfolio will be active on both platforms, data integration will be deepened for hyper-personalization, and new, exclusive content will be co-developed for 7bet.</p>
+                                <ul class="mt-4 space-y-2 list-disc list-inside text-slate-600">
+                                    <li><strong>Key Activities:</strong> Full ecosystem activation, deep data integration, co-development of exclusive content.</li>
+                                    <li><strong>Success Metrics:</strong> Blended LTV growth, market share growth in the under-25 demographic.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="next-steps" class="py-24 bg-sky-600 text-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl font-bold">Partner for the Future, Starting Today</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-sky-100">The market will not wait. This partnership is the key not just to adapting to change, but to leading the future of the iGaming industry.</p>
+                <div class="mt-10">
+                    <p class="text-lg">We propose a follow-up meeting with your strategy team within the next two weeks.</p>
+                    <p class="text-lg font-bold">We look forward to building 7bet's next chapter of growth, together.</p>
+                     <a href="#header" class="mt-8 inline-block bg-white text-sky-600 font-bold py-3 px-8 rounded-full hover:bg-slate-100 transition-colors duration-300">
+                        Propose a Meeting
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="bg-slate-800 text-slate-400">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-sm">
+            <p>&copy; 2025 Massive Gaming. All Rights Reserved.</p>
+            <p>This document was prepared exclusively for the purpose of a strategic partnership proposal for 7bet.</p>
+        </div>
+    </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    const marketGrowthChartCtx = document.getElementById('marketGrowthChart')?.getContext('2d');
+    if (marketGrowthChartCtx) {
+        new Chart(marketGrowthChartCtx, {
+            type: 'line',
+            data: {
+                labels: ['2025', '2026', '2027', '2028', '2029', '2030'],
+                datasets: [{
+                    label: 'Online Gambling Market Growth (Under-25s)',
+                    data: [100, 114.32, 130.69, 149.36, 170.75, 195.19],
+                    borderColor: 'rgb(14, 165, 233)',
+                    backgroundColor: 'rgba(14, 165, 233, 0.1)',
+                    fill: true,
+                    tension: 0.4,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            title: (context) => `Year: ${context[0].label}`,
+                            label: function(context) {
+                                let label = 'Market Index';
+                                if (context.parsed.y !== null) {
+                                    let growth = ((context.parsed.y / 100) - 1) * 100;
+                                    label += `: +${growth.toFixed(2)}% (vs 2025)`;
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: { 
+                        beginAtZero: false,
+                        ticks: {
+                            callback: function(value) {
+                                return `+${((value / 100) - 1) * 100 .toFixed(0)}%`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    const kpiImpactChartCtx = document.getElementById('kpiImpactChart')?.getContext('2d');
+    if (kpiImpactChartCtx) {
+        new Chart(kpiImpactChartCtx, {
+            type: 'bar',
+            data: {
+                labels: ['New User Acquisition (U25)', 'Customer Acq. Cost (CAC)', '7-Day Retention Rate', 'Cross-Sell Rate (Inst.→Slot)', 'Avg. Player LTV'],
+                datasets: [{
+                    label: 'Projected Uplift/Reduction',
+                    data: [40, -25, 15, 30, 20],
+                    backgroundColor: (context) => {
+                        const value = context.raw;
+                        return value > 0 ? 'rgba(16, 185, 129, 0.7)' : 'rgba(239, 68, 68, 0.7)';
+                    },
+                    borderColor: (context) => {
+                        const value = context.raw;
+                        return value > 0 ? 'rgb(16, 185, 129)' : 'rgb(239, 68, 68)';
+                    },
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let value = context.raw;
+                                let label = context.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (value > 0) {
+                                    return `${label} +${value}% Uplift`;
+                                } else {
+                                     return `${label} ${value}% Reduction`;
+                                }
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        },
+                        grid: {
+                           color: '#e2e8f0'
+                        }
+                    },
+                    y: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    const tabs = document.querySelectorAll('.tab-button');
+    const panes = document.querySelectorAll('.tab-pane');
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const tabId = tab.getAttribute('data-tab');
+            
+            tabs.forEach(item => {
+                item.classList.remove('active');
+            });
+            panes.forEach(pane => {
+                pane.classList.add('hidden');
+                pane.classList.remove('active');
+            });
+            
+            tab.classList.add('active');
+            const activePane = document.querySelector(`.tab-pane[data-content='${tabId}']`);
+            if (activePane) {
+                activePane.classList.remove('hidden');
+                activePane.classList.add('active');
+            }
+        });
+    });
+});
+</script>
+
+</body>
+</html>
