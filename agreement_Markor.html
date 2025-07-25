@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게임 라이선스 계약 대시보드</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Slate & Muted Blue -->
+    <!-- Application Structure Plan: A single-page dashboard design is used to transform a dense legal summary into an intuitive, explorable tool. The structure is thematic, not linear, to prioritize user understanding. It starts with a high-level 'Overview', followed by a side-by-side 'Rights & Obligations' comparison for clarity. 'Key Terms' are presented as interactive visual cards (timeline, flowchart, SLA table) for engagement and quick comprehension. A final 'General Provisions' section acts as a reference. This non-linear, task-oriented structure allows users (e.g., project managers, legal reviewers) to quickly grasp the contract's essence and drill down into specific areas of interest without reading the entire document sequentially, thus enhancing usability and information retention. -->
+    <!-- Visualization & Content Choices: 
+        - Agreement Overview (Inform): Styled HTML cards to present core facts (parties, type, term) for immediate context.
+        - Rights & Obligations (Compare): A two-column Tailwind grid layout visually separates Markor and Game Supplier responsibilities. Icons (Unicode) provide quick visual cues for obligation types (financial, technical). Goal is direct comparison.
+        - Contract Term (Change/Inform): A Chart.js horizontal bar chart visualizes the 3-year initial term and subsequent 1-year renewals. This is more intuitive than text alone.
+        - Revenue Flow (Organize): An HTML/CSS flexbox flowchart diagrams the process from GGR to payment. Interaction: hover effects reveal details on each step. This clarifies a complex process.
+        - SLA Table (Organize/Compare): An interactive HTML table displays response times. JS filters allow users to select an issue severity and see only relevant data, making it a practical tool.
+        - Direct Supply Restriction (Inform): A visual diagram made with HTML/Tailwind clarifies the 2-year restriction and penalty, making a critical business rule easy to understand.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+            color: #1e293b; /* slate-800 */
+        }
+        .nav-link {
+            transition: color 0.3s, border-bottom-color 0.3s;
+        }
+        .nav-link.active {
+            color: #2563eb; /* blue-600 */
+            border-bottom-color: #2563eb; /* blue-600 */
+        }
+        .chart-container {
+            position: relative;
+            margin: auto;
+            height: 250px;
+            width: 100%;
+            max-width: 800px;
+        }
+        .flowchart-step {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .flowchart-step:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <span class="font-bold text-xl text-slate-700">📜 계약 대시보드</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#overview" class="nav-link px-3 py-2 text-sm font-medium text-slate-500 hover:text-blue-600 border-b-2 border-transparent">계약 개요</a>
+                        <a href="#rights-obligations" class="nav-link px-3 py-2 text-sm font-medium text-slate-500 hover:text-blue-600 border-b-2 border-transparent">권리와 의무</a>
+                        <a href="#key-terms" class="nav-link px-3 py-2 text-sm font-medium text-slate-500 hover:text-blue-600 border-b-2 border-transparent">주요 조건</a>
+                        <a href="#sla" class="nav-link px-3 py-2 text-sm font-medium text-slate-500 hover:text-blue-600 border-b-2 border-transparent">서비스 수준 협약</a>
+                        <a href="#general" class="nav-link px-3 py-2 text-sm font-medium text-slate-500 hover:text-blue-600 border-b-2 border-transparent">일반 조항</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+
+        <section id="overview" class="scroll-mt-20 mb-16">
+            <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-2">게임 라이선스 계약 (실시간 베팅)</h1>
+            <p class="text-lg text-slate-600 mb-8">본 대시보드는 계약서의 핵심 내용을 시각적으로 요약하여 주요 조건들을 쉽게 파악할 수 있도록 돕습니다.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="font-bold text-lg mb-2">계약 당사자</h3>
+                    <p class="text-slate-700 font-semibold">Markor Technology Ltd.</p>
+                    <p class="text-slate-500 text-sm mb-2">(T/A Casimba Gaming)</p>
+                    <p class="text-slate-700 font-semibold">Game Supplier</p>
+                    <p class="text-slate-500 text-sm">(계약 시 특정)</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="font-bold text-lg mb-2">라이선스 유형</h3>
+                    <p class="text-slate-700">B2B 게임 라이선스</p>
+                    <div class="mt-2 space-y-1 text-sm">
+                        <span class="inline-block bg-blue-100 text-blue-800 rounded-full px-3 py-1">해지 가능</span>
+                        <span class="inline-block bg-green-100 text-green-800 rounded-full px-3 py-1">비독점적</span>
+                        <span class="inline-block bg-yellow-100 text-yellow-800 rounded-full px-3 py-1">양도 불가</span>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="font-bold text-lg mb-2">계약 기간</h3>
+                    <p class="text-slate-700">최초 3년</p>
+                    <p class="text-slate-500 text-sm">이후 1년 단위 자동 갱신</p>
+                    <p class="text-slate-500 text-sm mt-1">(만료 6개월 전 서면 통지로 종료 가능)</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="rights-obligations" class="scroll-mt-20 mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-6 text-center">핵심 권리와 의무 비교</h2>
+            <p class="text-center text-slate-600 mb-8 max-w-2xl mx-auto">각 당사자의 주요 권리와 의무를 한눈에 비교하여 계약 관계의 핵심을 파악할 수 있습니다. 각 항목을 클릭하면 관련 세부 정보를 확인할 수 있습니다.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div id="markor-col">
+                    <h3 class="text-xl font-bold text-center mb-4 text-blue-700">Markor (라이선시)</h3>
+                </div>
+                <div id="supplier-col">
+                    <h3 class="text-xl font-bold text-center mb-4 text-green-700">Game Supplier (라이선서)</h3>
+                </div>
+            </div>
+        </section>
+
+        <section id="key-terms" class="scroll-mt-20 mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-8 text-center">주요 계약 조건</h2>
+            <div class="space-y-12">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">계약 기간 타임라인</h3>
+                    <p class="text-slate-600 mb-4 max-w-3xl">본 계약은 최초 3년의 기간으로 시작되며, 이후 1년 단위로 자동 갱신됩니다. 이 타임라인은 계약의 전체 수명 주기를 시각적으로 보여줍니다.</p>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <div class="chart-container">
+                            <canvas id="termChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">수익 정산 프로세스</h3>
+                    <p class="text-slate-600 mb-6 max-w-3xl">게임 수익이 발생하고 정산되기까지의 과정을 단계별로 나타냅니다. 각 단계를 통해 자금의 흐름과 정보 보고 과정을 이해할 수 있습니다.</p>
+                    <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-2 text-center">
+                        <div class="flowchart-step bg-white p-4 rounded-lg shadow-md w-full md:w-48">
+                            <div class="text-2xl mb-2">①</div>
+                            <h4 class="font-semibold">수익 발생</h4>
+                            <p class="text-xs text-slate-500">GGR/NGR 계산</p>
+                        </div>
+                        <div class="text-2xl text-slate-400 transform rotate-90 md:rotate-0">→</div>
+                        <div class="flowchart-step bg-white p-4 rounded-lg shadow-md w-full md:w-48">
+                            <div class="text-2xl mb-2">②</div>
+                            <h4 class="font-semibold">Markor 리포트</h4>
+                            <p class="text-xs text-slate-500">매월 말 +15영업일</p>
+                        </div>
+                        <div class="text-2xl text-slate-400 transform rotate-90 md:rotate-0">→</div>
+                        <div class="flowchart-step bg-white p-4 rounded-lg shadow-md w-full md:w-48">
+                             <div class="text-2xl mb-2">③</div>
+                            <h4 class="font-semibold">Supplier 인보이스</h4>
+                            <p class="text-xs text-slate-500">리포트 수령 후 +10영업일</p>
+                        </div>
+                        <div class="text-2xl text-slate-400 transform rotate-90 md:rotate-0">→</div>
+                        <div class="flowchart-step bg-white p-4 rounded-lg shadow-md w-full md:w-48">
+                             <div class="text-2xl mb-2">④</div>
+                            <h4 class="font-semibold">Markor 지급</h4>
+                            <p class="text-xs text-slate-500">인보이스 수령 후 +30영업일</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-4">직접 공급 제한 조항</h3>
+                    <p class="text-slate-600 mb-6 max-w-3xl">Game Supplier는 Markor의 특정 파트너에게 2년간 직접 게임을 공급할 수 없습니다. 이는 Markor의 파트너 관계를 보호하기 위한 핵심 조항입니다.</p>
+                    <div class="bg-white p-6 rounded-lg shadow-md flex flex-col md:flex-row items-center gap-6">
+                        <div class="text-center">
+                            <div class="text-5xl">🚫</div>
+                            <p class="font-bold mt-2">직접 공급 금지</p>
+                        </div>
+                        <div class="flex-grow">
+                            <p class="font-semibold text-lg">제한 기간: 2년</p>
+                            <p class="text-slate-600">Markor가 특정 Commercial Partner와 게임을 연동하여 라이브한 시점부터 2년간, Game Supplier는 해당 파트너와 직접 계약할 수 없습니다.</p>
+                            <div class="mt-4 bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded-r-lg">
+                                <p class="font-bold">위반 시 패널티</p>
+                                <p>위반 시, 해당 파트너로부터 발생한 직전 9개월 평균 수익에 해당하는 금액을 패널티로 지급해야 합니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sla" class="scroll-mt-20 mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-6 text-center">서비스 수준 협약 (SLA)</h2>
+            <p class="text-center text-slate-600 mb-8 max-w-2xl mx-auto">게임 운영 중 발생할 수 있는 이슈의 심각도에 따른 대응 및 해결 목표 시간입니다. 필터를 사용하여 특정 심각도 수준의 요구사항을 확인할 수 있습니다.</p>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <div class="mb-4 text-center">
+                    <span class="font-semibold mr-4">심각도 필터:</span>
+                    <button data-severity="all" class="sla-filter active bg-blue-600 text-white px-4 py-2 rounded-full text-sm">전체</button>
+                    <button data-severity="Critical" class="sla-filter bg-slate-200 text-slate-700 px-4 py-2 rounded-full text-sm">심각</button>
+                    <button data-severity="Medium" class="sla-filter bg-slate-200 text-slate-700 px-4 py-2 rounded-full text-sm">중간</button>
+                    <button data-severity="Low" class="sla-filter bg-slate-200 text-slate-700 px-4 py-2 rounded-full text-sm">낮음</button>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr>
+                                <th class="py-3 px-4 bg-slate-100 font-bold uppercase text-sm text-slate-600 border-b border-slate-200">이슈 심각도</th>
+                                <th class="py-3 px-4 bg-slate-100 font-bold uppercase text-sm text-slate-600 border-b border-slate-200">최초 응답 및 업데이트</th>
+                                <th class="py-3 px-4 bg-slate-100 font-bold uppercase text-sm text-slate-600 border-b border-slate-200">임시 해결 (Workaround)</th>
+                                <th class="py-3 px-4 bg-slate-100 font-bold uppercase text-sm text-slate-600 border-b border-slate-200">최종 해결</th>
+                            </tr>
+                        </thead>
+                        <tbody id="sla-table-body">
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-center text-slate-500 text-xs mt-4">서비스 가용성 목표: 99.95% (월 기준)</p>
+            </div>
+        </section>
+
+        <section id="general" class="scroll-mt-20">
+            <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-6 text-center">일반 조항</h2>
+            <p class="text-center text-slate-600 mb-8 max-w-2xl mx-auto">계약의 법적 효력, 분쟁 해결, 비밀유지 등 기타 중요한 일반 조항들입니다. 각 항목을 클릭하여 내용을 확인하세요.</p>
+            <div id="general-provisions-container" class="space-y-2">
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="bg-slate-800 text-slate-400 mt-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 text-center text-sm">
+            <p>본 대시보드는 정보 제공 목적으로 제작되었으며, 법적 효력을 갖지 않습니다. 실제 계약 내용은 원본 계약서를 참조하십시오.</p>
+        </div>
+    </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const rightsObligationsData = {
+        markor: [
+            { icon: '🔧', title: '게임 통합 권한', text: 'Markor 플랫폼에 게임을 통합할 수 있는 권리 (3.1.1)' },
+            { icon: '🌐', title: '게임 배포 권한', text: 'Commercial Partners 및 End Users에게 게임을 제공할 수 있는 권리 (3.1.2)' },
+            { icon: '🗣️', title: '오류 조치 요구 권한', text: 'Malfunction 발생 시 Game Supplier에 복구 조치를 요청할 수 있는 권리 (4.3, 4.3.2)' },
+            { icon: '🛡️', title: '독점 보호 권리', text: '통합된 Commercial Partner에 대해 Game Supplier의 직접 공급을 제한할 권리 (4.5)' },
+            { icon: '💸', title: '벌금 청구권', text: '제한 조항 위반 시 Penalty Fee를 청구할 수 있는 권리 (4.7)' },
+            { icon: '💻', title: '통합 개발 의무', text: 'Game Supplier가 제공하는 자료를 바탕으로 자체 비용으로 통합 개발 수행 (4.1)' },
+            { icon: '📊', title: '정산 리포트 제공 의무', text: '매월 GGR, NGR 등을 포함한 보고서 제공 (5.2)' },
+            { icon: '💳', title: '인보이스 정산 의무', text: '인보이스 수령 후 30일 이내에 라이선스료 지급 (5.6)' },
+            { icon: '🗑️', title: '게임 철수 의무', text: '계약 종료 시 Approved Website에서 게임을 제거하고 접근을 차단할 의무 (11.1.1)' },
+        ],
+        supplier: [
+            { icon: '💰', title: '라이선스 수익 수령권', text: 'Markor로부터 Game Licence Fee를 수령할 권리 (5.1)' },
+            { icon: '📄', title: '정산자료 기반 청구권', text: 'Markor의 정산 보고서에 근거하여 인보이스 발행 가능 (5.5)' },
+            { icon: '🔍', title: '감사 권리', text: '연 1회 외부 회계 감사인을 통해 정산 기록을 감사할 수 있는 권리 (6.2)' },
+            { icon: '🤝', title: '직접 공급 권한 (조건부)', text: '제한 기간 종료 후 12개월 전 서면 통지 시, Markor의 Commercial Partner에 직접 공급 가능 (4.6)' },
+            { icon: '🔌', title: 'API 및 통합 자료 제공 의무', text: 'Markor가 통합 개발을 수행할 수 있도록 API, 문서, 기술 정보 제공 (4.1)' },
+            { icon: '🛠️', title: '오류 복구 의무', text: 'Malfunction 발생 시 24시간 내 대응 계획 통보, 48시간 내 복구 계획 공유 (4.3.1)' },
+            { icon: '🏅', title: '기술 인증 확보 의무', text: '제3자 인증기관 및 관할 규제당국의 기술 인증을 확보할 의무 (4.4)' },
+            { icon: '🚫', title: '직접 공급 제한 준수 의무', text: '제한 기간 내 Markor의 Commercial Partner와 직접 계약 금지 (4.5)' },
+            { icon: '🛡️', title: 'IP 침해 방지 및 보상 의무', text: '제3자 지재권 침해가 없음을 보장하고, 침해 시 전면 배상 (7.2.1, 8.1)' },
+        ]
+    };
+
+    const slaData = [
+        { severity: 'Critical', response: '30분 이내 응답, 이후 매 시간', workaround: '2시간', final: '24시간' },
+        { severity: 'Medium', response: '1시간 이내 응답, 이후 매 12시간', workaround: '4시간', final: '48시간' },
+        { severity: 'Low', response: '2시간 이내 응답, 이후 매 영업일', workaround: '4시간', final: '96시간' },
+    ];
+    
+    const generalProvisionsData = [
+        { title: '보증 (7조)', content: '각 당사자의 계약 체결 권한, 법적 구속력, 의무 이행 능력 등에 대한 일반적인 보증과, Game Supplier의 게임 관련 특정 보증(오류 없음, 악성 코드 없음, 규제 준수, IP 비침해 등)을 포함합니다.' },
+        { title: '면책 (8조)', content: 'Game Supplier는 게임 또는 Game IP의 제3자 IP 침해, 규제 기관의 제재, 오작동, 규제 벌금 등으로 인해 Markor가 입는 손실에 대해 면책하고 방어할 의무가 있습니다.' },
+        { title: '책임 제한 (12조)', content: '사망 또는 개인 상해, 사기, 오작동, 법률상 제한할 수 없는 책임 외에는 간접적, 결과적 손해에 대한 책임이 없으며, 총 책임은 직전 12개월간 Markor가 지급한 금액으로 제한됩니다.' },
+        { title: '비밀유지 (13조)', content: '양 당사자는 계약 관련 모든 기밀 정보를 항상 비밀로 유지해야 하며, 특정 예외(법적 요구, 전문 자문가 등)를 제외하고는 제3자에게 공개할 수 없습니다.' },
+        { title: '양도 (20조)', content: 'Game Supplier는 Markor의 사전 서면 동의 없이 본 계약을 양도할 수 없으며, Markor는 자사 계열사에게 자유롭게 양도할 수 있습니다.' },
+        { title: '분쟁 해결 (27조)', content: '분쟁 발생 시 계정 관리자, CEO 순으로 협의를 통해 해결을 시도하며, 합의가 되지 않을 경우 중재를 거쳐 법적 조치를 취할 수 있습니다.' },
+        { title: '준거법 및 관할권 (28조)', content: '본 계약은 지브롤터 법률에 따라 규율되며, 지브롤터 법원이 독점적인 관할권을 가집니다.' }
+    ];
+
+    function renderRightsObligations() {
+        const markorCol = document.getElementById('markor-col');
+        const supplierCol = document.getElementById('supplier-col');
+        
+        rightsObligationsData.markor.forEach(item => {
+            markorCol.innerHTML += `
+                <div class="bg-white p-4 rounded-lg shadow-md mb-4 cursor-pointer hover:shadow-lg transition-shadow">
+                    <div class="flex items-start">
+                        <span class="text-2xl mr-4">${item.icon}</span>
+                        <div>
+                            <h4 class="font-semibold">${item.title}</h4>
+                            <p class="text-sm text-slate-600">${item.text}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        rightsObligationsData.supplier.forEach(item => {
+            supplierCol.innerHTML += `
+                <div class="bg-white p-4 rounded-lg shadow-md mb-4 cursor-pointer hover:shadow-lg transition-shadow">
+                    <div class="flex items-start">
+                        <span class="text-2xl mr-4">${item.icon}</span>
+                        <div>
+                            <h4 class="font-semibold">${item.title}</h4>
+                            <p class="text-sm text-slate-600">${item.text}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+    }
+
+    function renderSlaTable(filter = 'all') {
+        const tableBody = document.getElementById('sla-table-body');
+        tableBody.innerHTML = '';
+        const filteredData = filter === 'all' ? slaData : slaData.filter(d => d.severity === filter);
+        
+        const severityClasses = {
+            'Critical': 'bg-red-100 text-red-800 font-bold',
+            'Medium': 'bg-yellow-100 text-yellow-800 font-semibold',
+            'Low': 'bg-green-100 text-green-800'
+        };
+
+        filteredData.forEach(item => {
+            const row = `
+                <tr class="sla-row" data-severity="${item.severity}">
+                    <td class="py-3 px-4 border-b border-slate-200"><span class="px-2 py-1 rounded-full text-sm ${severityClasses[item.severity]}">${item.severity === 'Critical' ? '심각' : item.severity === 'Medium' ? '중간' : '낮음'}</span></td>
+                    <td class="py-3 px-4 border-b border-slate-200 text-slate-700">${item.response}</td>
+                    <td class="py-3 px-4 border-b border-slate-200 text-slate-700">${item.workaround}</td>
+                    <td class="py-3 px-4 border-b border-slate-200 text-slate-700">${item.final}</td>
+                </tr>
+            `;
+            tableBody.innerHTML += row;
+        });
+    }
+    
+    function renderGeneralProvisions() {
+        const container = document.getElementById('general-provisions-container');
+        generalProvisionsData.forEach(item => {
+            container.innerHTML += `
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <button class="accordion-toggle w-full p-4 text-left font-semibold flex justify-between items-center hover:bg-slate-50 transition">
+                        <span>${item.title}</span>
+                        <span class="transform transition-transform text-slate-500 text-xl">+</span>
+                    </button>
+                    <div class="accordion-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                        <p class="p-4 pt-0 text-slate-600">${item.content}</p>
+                    </div>
+                </div>
+            `;
+        });
+    }
+
+    renderRightsObligations();
+    renderSlaTable();
+    renderGeneralProvisions();
+
+    const termChartCtx = document.getElementById('termChart').getContext('2d');
+    new Chart(termChartCtx, {
+        type: 'bar',
+        data: {
+            labels: ['계약 기간'],
+            datasets: [{
+                label: '최초 기간',
+                data: [3],
+                backgroundColor: 'rgba(59, 130, 246, 0.7)',
+                borderColor: 'rgba(59, 130, 246, 1)',
+                borderWidth: 1,
+                barPercentage: 0.5,
+            }, {
+                label: '갱신 기간',
+                data: [1],
+                backgroundColor: 'rgba(14, 165, 233, 0.7)',
+                borderColor: 'rgba(14, 165, 233, 1)',
+                borderWidth: 1,
+                barPercentage: 0.5,
+            }]
+        },
+        options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    stacked: true,
+                    title: { display: true, text: '기간 (년)' }
+                },
+                y: {
+                    stacked: true,
+                    grid: { display: false }
+                }
+            },
+            plugins: {
+                legend: { position: 'bottom' },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return `${context.dataset.label}: ${context.raw}년`;
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    const slaFilters = document.querySelectorAll('.sla-filter');
+    slaFilters.forEach(button => {
+        button.addEventListener('click', (e) => {
+            const severity = e.target.dataset.severity;
+            renderSlaTable(severity);
+            slaFilters.forEach(btn => {
+                btn.classList.remove('active', 'bg-blue-600', 'text-white');
+                btn.classList.add('bg-slate-200', 'text-slate-700');
+            });
+            e.target.classList.add('active', 'bg-blue-600', 'text-white');
+            e.target.classList.remove('bg-slate-200', 'text-slate-700');
+        });
+    });
+
+    const accordions = document.querySelectorAll('.accordion-toggle');
+    accordions.forEach(button => {
+        button.addEventListener('click', () => {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('span:last-child');
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                icon.classList.remove('rotate-45');
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+                icon.classList.add('rotate-45');
+            }
+        });
+    });
+    
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            if (pageYOffset >= sectionTop - 80) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').includes(current)) {
+                link.classList.add('active');
+            }
+        });
+    });
+
+});
+</script>
+</body>
+</html>
