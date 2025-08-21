@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VGW 종합 사업 분석 보고서 2010-2025</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+        body { 
+            font-family: 'Noto Sans KR', sans-serif; 
+            line-height: 1.6;
+        }
+        .timeline-item {
+            border-left: 3px solid #3b82f6;
+            padding-left: 1.5rem;
+            margin-left: 1rem;
+            position: relative;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0.5rem;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: #3b82f6;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .card-shadow {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .brand-card {
+            transition: transform 0.3s ease;
+        }
+        .brand-card:hover {
+            transform: translateY(-5px);
+        }
+        .chart-container {
+            height: 400px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <div class="gradient-bg text-white py-12">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h1 class="text-4xl font-bold mb-4">
+                <i class="fas fa-gamepad mr-3"></i>
+                Virtual Gaming Worlds (VGW)
+            </h1>
+            <p class="text-xl opacity-90">2010-2025 종합 사업 분석 보고서</p>
+            <p class="text-lg opacity-80 mt-2">스윕스테이크 모델 혁신부터 글로벌 확장까지</p>
+        </div>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-4 py-8">
+        <!-- Executive Summary -->
+        <section class="mb-12">
+            <div class="bg-white rounded-xl card-shadow p-8">
+                <h2 class="text-3xl font-bold mb-6 text-gray-800 border-b-2 border-blue-500 pb-2">
+                    <i class="fas fa-chart-line text-blue-500 mr-3"></i>Executive Summary
+                </h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-gray-700">핵심 성과 지표</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
+                                <span class="font-medium">2024년 매출</span>
+                                <span class="text-blue-600 font-bold">$61억 (30% 증가)</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+                                <span class="font-medium">순이익</span>
+                                <span class="text-green-600 font-bold">$4.92억</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-purple-50 rounded-lg">
+                                <span class="font-medium">월간 활성 사용자</span>
+                                <span class="text-purple-600 font-bold">100만명+</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-yellow-50 rounded-lg">
+                                <span class="font-medium">직원 수</span>
+                                <span class="text-yellow-600 font-bold">900명+</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-gray-700">주요 혁신 요소</h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>스윕스테이크 모델 개척</li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>Dual-Currency 시스템 구축</li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>자체 게임 스튜디오 운영</li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>3개 브랜드 포트폴리오 완성</li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>북미 시장 특화 전략</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1. 연도별 사업 확장 타임라인 -->
+        <section class="mb-12">
+            <div class="bg-white rounded-xl card-shadow p-8">
+                <h2 class="text-3xl font-bold mb-8 text-gray-800 border-b-2 border-blue-500 pb-2">
+                    <i class="fas fa-timeline text-blue-500 mr-3"></i>1. 연도별 사업 확장 타임라인 (2010-2025)
+                </h2>
+                
+                <div class="space-y-6">
+                    <div class="timeline-item">
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h3 class="font-bold text-lg text-blue-800">2010년 - 회사 설립</h3>
+                            <p class="text-gray-700 mt-2">Laurence Escalante가 호주 퍼스에서 VGW 창업. 친구들과 포커를 즐기고자 한 아이디어에서 출발</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="bg-green-50 p-4 rounded-lg">
+                            <h3 class="font-bold text-lg text-green-800">2012년 - Chumba Casino 출시</h3>
+                            <p class="text-gray-700 mt-2">첫 소셜 카지노 플랫폼인 Chumba Casino를 미국 시장에 선보임</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="bg-yellow-50 p-4 rounded-lg">
+                            <h3 class="font-bold text-lg text-yellow-800">2013년 - Golden Feather Studios 설립</h3>
+                            <p class="text-gray-700 mt-2">자체 게임 개발 스튜디오 설립으로 독점 콘텐츠 제작 시작</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="bg-purple-50 p-4 rounded-lg">
+                            <h3 class="font-bold text-lg text-purple-800">2016년 - Global Poker 출시</h3>
+                            <p class="text-gray-700 mt-2">두 번째 브랜드인 Global Poker로 소셜 포커 시장 진출</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="bg-indigo-50 p-4 rounded-lg">
+                            <h3 class="font-bold text-lg text-indigo-800">2017년 - 스윕스테이크 모델 본격 도입</h3>
+                            <p class="text-gray-700 mt-2">몰타 라이선스하에 미국 전역 서비스 시작. Dual-Currency 시스템 확립</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="bg-pink-50 p-4 rounded-lg">
+                            <h3 class="font-bold text-lg text-pink-800">2019년 - LuckyLand Slots 출시</h3>
+                            <p class="text-gray-700 mt-2">세 번째 브랜드로 3개 브랜드 포트폴리오 완성</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="bg-red-50 p-4 rounded-lg">
+                            <h3 class="font-bold text-lg text-red-800">2020년 - 팬데믹 특수</h3>
+                            <p class="text-gray-700 mt-2">코로나19로 수요 급증. 순이익 1억1,580만 달러 기록 (60% 증가)</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="bg-teal-50 p-4 rounded-lg">
+                            <h3 class="font-bold text-lg text-teal-800">2021년 - MAU 100만 명 돌파</h3>
+                            <p class="text-gray-700 mt-2">Chumba Casino 단일 브랜드 이용자 100만 명 넘어서며 큰 이정표 달성</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="bg-orange-50 p-4 rounded-lg">
+                            <h3 class="font-bold text-lg text-orange-800">2023년 - 페라리 F1 스폰서십 & 규제 도전</h3>
+                            <p class="text-gray-700 mt-2">페라리 F1 팀과 스폰서십 계약. 미시건주 등 일부 지역에서 규제 강화로 철수</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h3 class="font-bold text-lg text-gray-800">2024년 - 사업 다각화</h3>
+                            <p class="text-gray-700 mt-2">99Dynamics 지분 13.9% 인수로 복권 사업 진출. 델라웨어주 철수</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="bg-blue-100 p-4 rounded-lg">
+                            <h3 class="font-bold text-lg text-blue-900">2025년 - 구조조정 & SGLA 설립</h3>
+                            <p class="text-gray-700 mt-2">Escalante 완전 인수로 비상장 전환. Social Gaming Leadership Alliance 설립</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 스윕스테이크 모델 분석 -->
+        <section class="mb-12">
+            <div class="bg-white rounded-xl card-shadow p-8">
+                <h2 class="text-3xl font-bold mb-8 text-gray-800 border-b-2 border-green-500 pb-2">
+                    <i class="fas fa-coins text-green-500 mr-3"></i>2. 스윕스테이크 모델의 혁신과 진화
+                </h2>
+                
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div class="bg-gradient-to-br from-yellow-50 to-orange-50 p-6 rounded-xl border border-yellow-200">
+                        <h3 class="text-xl font-bold mb-4 text-yellow-800">
+                            <i class="fas fa-coin text-yellow-600 mr-2"></i>골드 코인 (GC)
+                        </h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li>• 게임 내 기본 가상화폐</li>
+                            <li>• 현금 가치 없음</li>
+                            <li>• 회원가입 시 무료 제공</li>
+                            <li>• 추가 구매 가능</li>
+                            <li>• 소셜 게임 전용</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-xl border border-blue-200">
+                        <h3 class="text-xl font-bold mb-4 text-blue-800">
+                            <i class="fas fa-trophy text-blue-600 mr-2"></i>스윕스 코인 (SC)
+                        </h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li>• 프로모션용 토큰</li>
+                            <li>• 무료 지급 (이벤트, 구매 혜택)</li>
+                            <li>• 당첨 시 현금/상품 교환 가능</li>
+                            <li>• 직접 판매하지 않음</li>
+                            <li>• 스윕스테이크 모드 활성화</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">법적 포지셔닝 전략</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        VGW의 스윕스테이크 모델은 미국 도박법의 3요소 (금전적 대가, 우연, 상금) 중 "금전적 대가"를 회피하는 구조입니다. 
+                        사용자가 지불하는 돈은 가치 없는 골드 코인 구매이며, 스윕스 코인은 어디까지나 무료 경품이라는 논리로 
+                        "맥도날드 몬폴리 게임" 같은 프로모션과 동일하다고 주장합니다.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 브랜드 포트폴리오 -->
+        <section class="mb-12">
+            <div class="bg-white rounded-xl card-shadow p-8">
+                <h2 class="text-3xl font-bold mb-8 text-gray-800 border-b-2 border-purple-500 pb-2">
+                    <i class="fas fa-layer-group text-purple-500 mr-3"></i>3. 브랜드 포트폴리오 및 서비스 분석
+                </h2>
+                
+                <div class="grid md:grid-cols-3 gap-6 mb-8">
+                    <div class="brand-card bg-gradient-to-br from-red-50 to-pink-50 p-6 rounded-xl border border-red-200">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-dice text-red-500 text-4xl mb-3"></i>
+                            <h3 class="text-xl font-bold text-red-800">Chumba Casino</h3>
+                            <p class="text-sm text-red-600">매출 비중 68%</p>
+                        </div>
+                        <ul class="text-sm space-y-1 text-gray-700">
+                            <li>• 슬롯, 테이블게임, 비디오포커</li>
+                            <li>• 250종+ 게임 보유</li>
+                            <li>• 웹 기반, 다운로드 불필요</li>
+                            <li>• 일일 로그인 보너스</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="brand-card bg-gradient-to-br from-green-50 to-teal-50 p-6 rounded-xl border border-green-200">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-spade text-green-500 text-4xl mb-3"></i>
+                            <h3 class="text-xl font-bold text-green-800">Global Poker</h3>
+                            <p class="text-sm text-green-600">매출 비중 5%</p>
+                        </div>
+                        <ul class="text-sm space-y-1 text-gray-700">
+                            <li>• 소셜 포커 전문 플랫폼</li>
+                            <li>• 토너먼트 중심 운영</li>
+                            <li>• 포커 애호가 타겟</li>
+                            <li>• 브라우저 기반 안정성</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="brand-card bg-gradient-to-br from-yellow-50 to-orange-50 p-6 rounded-xl border border-yellow-200">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-slot-machine text-yellow-500 text-4xl mb-3"></i>
+                            <h3 class="text-xl font-bold text-yellow-800">LuckyLand Slots</h3>
+                            <p class="text-sm text-yellow-600">매출 비중 27%</p>
+                        </div>
+                        <ul class="text-sm space-y-1 text-gray-700">
+                            <li>• 슬롯 특화 플랫폼</li>
+                            <li>• 캐주얼 사용자 친화적</li>
+                            <li>• 토너먼트 기능 제공</li>
+                            <li>• 독점 슬롯 게임</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 브랜드별 매출 비중 차트 -->
+                <div class="bg-gray-50 p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold mb-4 text-center">브랜드별 매출 비중</h3>
+                    <div class="chart-container">
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 카지노 외 확장 분야 -->
+        <section class="mb-12">
+            <div class="bg-white rounded-xl card-shadow p-8">
+                <h2 class="text-3xl font-bold mb-8 text-gray-800 border-b-2 border-indigo-500 pb-2">
+                    <i class="fas fa-expand-arrows-alt text-indigo-500 mr-3"></i>4. 카지노 외 주요 확장 분야
+                </h2>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-gradient-to-r from-blue-50 to-cyan-50 p-6 rounded-xl border border-blue-200">
+                        <h3 class="text-xl font-bold mb-3 text-blue-800">
+                            <i class="fas fa-palette text-blue-600 mr-2"></i>Golden Feather Studios
+                        </h3>
+                        <div class="text-sm text-gray-700 space-y-2">
+                            <p><strong>설립:</strong> 2013년 (10년+ 운영)</p>
+                            <p><strong>역할:</strong> 자체 게임 개발 및 독점 콘텐츠 공급</p>
+                            <p><strong>대표작:</strong> Stampede Fury, Fu Qian Qian, Western Gold</p>
+                            <p><strong>강점:</strong> 세계적 수준의 아티스트/디자이너 보유</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-xl border border-green-200">
+                        <h3 class="text-xl font-bold mb-3 text-green-800">
+                            <i class="fas fa-ticket-alt text-green-600 mr-2"></i>복권 사업 (99Dynamics)
+                        </h3>
+                        <div class="text-sm text-gray-700 space-y-2">
+                            <p><strong>투자:</strong> 2024년 지분 13.9% 인수</p>
+                            <p><strong>브랜드:</strong> Jackpot.com 연계</p>
+                            <p><strong>진출 주:</strong> TX, NY, NJ, OH, MA, AR 등 6개 주</p>
+                            <p><strong>목표:</strong> 온라인 복권 서비스 확장</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-xl border border-purple-200">
+                        <h3 class="text-xl font-bold mb-3 text-purple-800">
+                            <i class="fas fa-gamepad text-purple-600 mr-2"></i>Monopoly 게임 (Hasbro 제휴)
+                        </h3>
+                        <div class="text-sm text-gray-700 space-y-2">
+                            <p><strong>출시:</strong> 2025년 계획</p>
+                            <p><strong>형태:</strong> Monopoly 테마 매치-3 게임</p>
+                            <p><strong>시장:</strong> 캐나다 소프트런칭 후 미국 출시</p>
+                            <p><strong>의미:</strong> 캐주얼 게임 시장 진출</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-red-50 to-orange-50 p-6 rounded-xl border border-red-200">
+                        <h3 class="text-xl font-bold mb-3 text-red-800">
+                            <i class="fas fa-video text-red-600 mr-2"></i>라이브 카지노
+                        </h3>
+                        <div class="text-sm text-gray-700 space-y-2">
+                            <p><strong>준비:</strong> 2024년 말부터</p>
+                            <p><strong>인력:</strong> 전 Entain 라이브 게임 책임자 영입</p>
+                            <p><strong>계획:</strong> Chumba와 LuckyLand에 라이브 딜러 도입</p>
+                            <p><strong>목표:</strong> 실시간 테이블 게임 서비스</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. 협회 활동 및 규제 대응 -->
+        <section class="mb-12">
+            <div class="bg-white rounded-xl card-shadow p-8">
+                <h2 class="text-3xl font-bold mb-8 text-gray-800 border-b-2 border-orange-500 pb-2">
+                    <i class="fas fa-handshake text-orange-500 mr-3"></i>5. 협회 활동 및 규제 대응
+                </h2>
+                
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 text-orange-800">
+                            <i class="fas fa-users text-orange-600 mr-2"></i>Social Gaming Leadership Alliance (SGLA)
+                        </h3>
+                        <div class="bg-orange-50 p-4 rounded-lg mb-4">
+                            <p class="text-sm text-gray-700 mb-2"><strong>설립:</strong> 2025년 5월</p>
+                            <p class="text-sm text-gray-700 mb-2"><strong>주도:</strong> VGW 중심</p>
+                            <p class="text-sm text-gray-700 mb-2"><strong>참여사:</strong> PLAYSTUDIOS, Yellow Social Interactive, ARB Interactive, B-Two Operations, Nuvei</p>
+                            <p class="text-sm text-gray-700"><strong>대표:</strong> 전 연방 하원의원 Jeff Duncan</p>
+                        </div>
+                        
+                        <h4 class="font-semibold mb-2 text-gray-800">핵심 원칙</h4>
+                        <ul class="text-sm space-y-1 text-gray-700">
+                            <li>• 무료 플레이 원칙</li>
+                            <li>• 책임 있는 게임 제공</li>
+                            <li>• 플레이어 보호 및 데이터 보안</li>
+                            <li>• 연령 확인 필수화</li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 text-red-800">
+                            <i class="fas fa-gavel text-red-600 mr-2"></i>법적 대응 성과
+                        </h3>
+                        <div class="space-y-3">
+                            <div class="bg-green-100 p-3 rounded-lg border border-green-200">
+                                <p class="text-sm font-medium text-green-800">2024년 12월 - 조지아 연방법원 승소</p>
+                                <p class="text-xs text-green-700">집단소송 관할권 부재로 기각</p>
+                            </div>
+                            <div class="bg-green-100 p-3 rounded-lg border border-green-200">
+                                <p class="text-sm font-medium text-green-800">2025년 2월 - 플로리다주 승소</p>
+                                <p class="text-xs text-green-700">주 법원 이송 저지 및 연방 차원 승소</p>
+                            </div>
+                        </div>
+                        
+                        <h4 class="font-semibold mb-2 text-gray-800 mt-4">서비스 제한 지역</h4>
+                        <div class="bg-red-50 p-3 rounded-lg">
+                            <p class="text-sm text-red-700">워싱턴, 아이다호, 미시건, 몬태나, 코네티컷, 네바다, 델라웨어, 뉴욕, 뉴저지</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. 기업 구조 변화 -->
+        <section class="mb-12">
+            <div class="bg-white rounded-xl card-shadow p-8">
+                <h2 class="text-3xl font-bold mb-8 text-gray-800 border-b-2 border-teal-500 pb-2">
+                    <i class="fas fa-building text-teal-500 mr-3"></i>6. 기업 구조 변화 및 미래 전략
+                </h2>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 text-teal-800">
+                            <i class="fas fa-user-tie text-teal-600 mr-2"></i>Escalante 완전 인수
+                        </h3>
+                        <div class="bg-teal-50 p-4 rounded-lg mb-4">
+                            <p class="text-sm text-gray-700 mb-2"><strong>시기:</strong> 2025년 8월 주주총회 가결</p>
+                            <p class="text-sm text-gray-700 mb-2"><strong>규모:</strong> A$3.2B (약 US$2.1B) 평가</p>
+                            <p class="text-sm text-gray-700 mb-2"><strong>구조:</strong> Ocean BidCo (건지 섬) 통한 재편</p>
+                            <p class="text-sm text-gray-700"><strong>목적:</strong> 비상장 전환으로 전략적 자유 확보</p>
+                        </div>
+                        
+                        <h4 class="font-semibold mb-2 text-gray-800">창업자 배경</h4>
+                        <p class="text-sm text-gray-700">개인 자산 약 A$4.37B (US$3B 후반) 규모의 억만장자로, 버거집 아르바이트에서 시작하여 글로벌 게임 기업을 건설한 성공 스토리</p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 text-gray-800">
+                            <i class="fas fa-chart-bar text-gray-600 mr-2"></i>2024년 재무 성과
+                        </h3>
+                        <div class="space-y-3">
+                            <div class="bg-blue-100 p-3 rounded-lg">
+                                <div class="flex justify-between">
+                                    <span class="text-sm font-medium">매출</span>
+                                    <span class="text-sm font-bold text-blue-700">$61억</span>
+                                </div>
+                                <div class="text-xs text-blue-600 mt-1">전년 대비 30% 증가</div>
+                            </div>
+                            <div class="bg-green-100 p-3 rounded-lg">
+                                <div class="flex justify-between">
+                                    <span class="text-sm font-medium">순이익</span>
+                                    <span class="text-sm font-bold text-green-700">$4.92억</span>
+                                </div>
+                                <div class="text-xs text-green-600 mt-1">사상 최대 실적</div>
+                            </div>
+                            <div class="bg-purple-100 p-3 rounded-lg">
+                                <div class="flex justify-between">
+                                    <span class="text-sm font-medium">이익률</span>
+                                    <span class="text-sm font-bold text-purple-700">8.1%</span>
+                                </div>
+                                <div class="text-xs text-purple-600 mt-1">안정적 수익 구조</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. MAU 성장 추이 -->
+        <section class="mb-12">
+            <div class="bg-white rounded-xl card-shadow p-8">
+                <h2 class="text-3xl font-bold mb-8 text-gray-800 border-b-2 border-pink-500 pb-2">
+                    <i class="fas fa-users text-pink-500 mr-3"></i>7. 월간 활성 사용자(MAU) 성장 추이
+                </h2>
+                
+                <div class="mb-6">
+                    <div class="chart-container">
+                        <canvas id="mauChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-4 rounded-lg border border-blue-200">
+                        <h4 class="font-semibold text-blue-800 mb-2">2017-2020: 폭발적 성장</h4>
+                        <p class="text-sm text-gray-700">스윕스테이크 모델 도입과 팬데믹 특수로 수십만 명에서 100만 명 수준까지 급성장</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-4 rounded-lg border border-green-200">
+                        <h4 class="font-semibold text-green-800 mb-2">2021-2023: 안정화</h4>
+                        <p class="text-sm text-gray-700">MAU 100만 명 수준에서 안정적 유지. 경쟁사 등장에도 불구하고 견고한 사용자 기반</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-orange-50 to-red-50 p-4 rounded-lg border border-orange-200">
+                        <h4 class="font-semibold text-orange-800 mb-2">2024-2025: 규제 도전</h4>
+                        <p class="text-sm text-gray-700">각 주 규제로 서비스 지역 축소되나, 높은 사용자 충성도와 수익성 유지</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. 시장 현황 및 서비스 지역 -->
+        <section class="mb-12">
+            <div class="bg-white rounded-xl card-shadow p-8">
+                <h2 class="text-3xl font-bold mb-8 text-gray-800 border-b-2 border-cyan-500 pb-2">
+                    <i class="fas fa-globe-americas text-cyan-500 mr-3"></i>8. 서비스 시장 현황
+                </h2>
+                
+                <div class="grid md:grid-cols-2 gap-8 mb-6">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-green-800">
+                            <i class="fas fa-check-circle text-green-600 mr-2"></i>서비스 가능 지역
+                        </h3>
+                        <div class="bg-green-50 p-4 rounded-lg">
+                            <p class="text-sm text-gray-700 mb-3"><strong>미국:</strong> 대부분의 주에서 서비스 가능</p>
+                            <p class="text-sm text-gray-700 mb-3"><strong>캐나다:</strong> 전 지역 서비스</p>
+                            <p class="text-sm text-gray-700"><strong>이용 조건:</strong> 만 18세 이상 (일부 21세)</p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-red-800">
+                            <i class="fas fa-times-circle text-red-600 mr-2"></i>서비스 제한 지역
+                        </h3>
+                        <div class="bg-red-50 p-4 rounded-lg">
+                            <div class="grid grid-cols-2 gap-2 text-sm text-gray-700">
+                                <div>• 워싱턴주</div>
+                                <div>• 아이다호주</div>
+                                <div>• 미시건주</div>
+                                <div>• 몬태나주</div>
+                                <div>• 코네티컷주</div>
+                                <div>• 네바다주</div>
+                                <div>• 델라웨어주</div>
+                                <div>• 뉴욕주</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+                    <h4 class="font-semibold text-yellow-800 mb-2">
+                        <i class="fas fa-exclamation-triangle text-yellow-600 mr-2"></i>2025년 신규 규제 동향
+                    </h4>
+                    <p class="text-sm text-gray-700">
+                        뉴저지(A5447 법안), 루이지애나, 캘리포니아 등에서 스윕스테이크 금지 입법이 추진되고 있어, 
+                        VGW는 현지 파트너십 강화와 로비 활동을 통해 적극 대응 중입니다.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. 결론 및 전망 -->
+        <section class="mb-12">
+            <div class="bg-white rounded-xl card-shadow p-8">
+                <h2 class="text-3xl font-bold mb-8 text-gray-800 border-b-2 border-gray-500 pb-2">
+                    <i class="fas fa-telescope text-gray-500 mr-3"></i>9. 결론 및 미래 전망
+                </h2>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-green-800">
+                            <i class="fas fa-thumbs-up text-green-600 mr-2"></i>핵심 성공 요인
+                        </h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li class="flex items-start">
+                                <i class="fas fa-star text-yellow-500 mt-1 mr-2"></i>
+                                혁신적 스윕스테이크 모델 개척
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-star text-yellow-500 mt-1 mr-2"></i>
+                                자체 콘텐츠 개발 역량 (Golden Feather)
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-star text-yellow-500 mt-1 mr-2"></i>
+                                3개 브랜드 차별화 전략
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-star text-yellow-500 mt-1 mr-2"></i>
+                                북미 시장 특화 집중
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-star text-yellow-500 mt-1 mr-2"></i>
+                                견고한 재무 구조 및 수익성
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-orange-800">
+                            <i class="fas fa-exclamation-triangle text-orange-600 mr-2"></i>주요 도전 과제
+                        </h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li class="flex items-start">
+                                <i class="fas fa-minus-circle text-red-500 mt-1 mr-2"></i>
+                                각 주별 규제 강화 및 시장 축소
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-minus-circle text-red-500 mt-1 mr-2"></i>
+                                경쟁사 증가로 시장 경쟁 심화
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-minus-circle text-red-500 mt-1 mr-2"></i>
+                                법적 불확실성 및 소송 리스크
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-minus-circle text-red-500 mt-1 mr-2"></i>
+                                북미 의존도로 인한 지역 집중 위험
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mt-8 bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-xl border border-blue-200">
+                    <h3 class="text-xl font-semibold mb-4 text-blue-800">
+                        <i class="fas fa-road text-blue-600 mr-2"></i>미래 전략 방향
+                    </h3>
+                    <div class="grid md:grid-cols-2 gap-4 text-sm text-gray-700">
+                        <div>
+                            <h4 class="font-medium mb-2 text-blue-700">사업 다각화</h4>
+                            <ul class="space-y-1">
+                                <li>• 복권 사업 확장 (99Dynamics)</li>
+                                <li>• 캐주얼 게임 진출 (Monopoly)</li>
+                                <li>• 라이브 카지노 도입</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-medium mb-2 text-purple-700">규제 대응</h4>
+                            <ul class="space-y-1">
+                                <li>• SGLA 통한 업계 자율규제</li>
+                                <li>• 현지 파트너십 강화</li>
+                                <li>• 비상장 전환으로 전략적 유연성 확보</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-gray-800 text-white py-8 rounded-xl">
+            <div class="text-center">
+                <h3 class="text-xl font-bold mb-4">VGW 종합 사업 분석 보고서</h3>
+                <p class="text-gray-300 mb-2">2010-2025년 15년간의 성장 여정</p>
+                <p class="text-gray-400 text-sm">
+                    본 보고서는 공개된 자료와 검증 가능한 데이터를 바탕으로 작성되었습니다.
+                </p>
+                <div class="mt-4 text-xs text-gray-500">
+                    <p>주요 출처: VGW 공식 발표, 언론 보도, 업계 분석 자료</p>
+                    <p>생성일: 2025년 1월</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // 브랜드별 매출 비중 차트
+        const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+        new Chart(revenueCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Chumba Casino', 'LuckyLand Slots', 'Global Poker'],
+                datasets: [{
+                    data: [68, 27, 5],
+                    backgroundColor: [
+                        '#ef4444',
+                        '#f59e0b', 
+                        '#10b981'
+                    ],
+                    borderWidth: 2,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 20,
+                            font: {
+                                size: 14
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.label + ': ' + context.parsed + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // MAU 성장 추이 차트
+        const mauCtx = document.getElementById('mauChart').getContext('2d');
+        new Chart(mauCtx, {
+            type: 'line',
+            data: {
+                labels: ['2012', '2014', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'],
+                datasets: [{
+                    label: 'MAU (만명)',
+                    data: [5, 10, 25, 40, 55, 70, 100, 100, 100, 95, 90, 85],
+                    borderColor: '#3b82f6',
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    tension: 0.4,
+                    fill: true,
+                    pointBackgroundColor: '#3b82f6',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2,
+                    pointRadius: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'MAU (만명)'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: '연도'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return 'MAU: ' + context.parsed.y + '만명';
+                            }
+                        }
+                    }
+                },
+                elements: {
+                    point: {
+                        hoverRadius: 8
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
